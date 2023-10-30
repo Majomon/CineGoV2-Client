@@ -1,0 +1,53 @@
+/* .container {
+  width: 100%;
+  display: flex;
+  margin-top: 3rem;
+} */
+
+/* .containerProfile {
+  width: 20%;
+  padding: 1rem;
+  margin: 0 auto;
+  border-right: 1px solid black;
+  color: rgb(95, 86, 86);
+} */
+
+/* .boxTittle {
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem;
+  height: 3rem;
+}
+
+.containerItems {
+  width: 80%;
+  padding: 1rem;
+}
+.containerButton {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  padding: 1rem;
+  padding-top: 1rem;
+  width: 100%;
+  height: 100%;
+}
+
+.button {
+  margin: 1.5rem 0;
+}
+
+.inactive {
+  background-color: transparent;
+}
+
+.active {
+  width: 200px;
+  padding: 0.5rem;
+  font-weight: bold;
+  background-color: #000000;
+  color: rgb(255, 255, 255);
+  border-radius: 3px;
+  text-align: left;
+} */
