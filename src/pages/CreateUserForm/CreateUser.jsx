@@ -14,7 +14,7 @@ const CreateUser = ({ theme }) => {
   const [uploadedPhoto, setUploadedPhoto] = useState("");
   const [showPwd, setShowPwd] = useState(false);
   const [showPwds, setShowPwds] = useState(false);
-  const cl = new cloudinary.Cloudinary({ cloud_name: "dhyqgl7ie" });
+  const cl = new cloudinary.Cloudinary({ cloud_name: "dhlv7gcew" });
 
   const navigate = useNavigate();
   const {
@@ -38,8 +38,8 @@ const CreateUser = ({ theme }) => {
   const handleUploadPhoto = () => {
     const widget_cloudinary = window.cloudinary.createUploadWidget(
       {
-        cloudName: "dhyqgl7ie",
-        uploadPreset: "a2i0wk5f",
+        cloudName: "dhlv7gcew",
+        uploadPreset: "uploadPreset",
         sources: ["local"],
         resourceType: ["image"],
         clientAllowedFormats: ["image"],
@@ -81,18 +81,18 @@ const CreateUser = ({ theme }) => {
   };
 
   return (
-    <div className="w-full h-full min-h-screen flex justify-center items-center pt-12">
+    <div className="w-full h-full min-h-screen flex justify-center items-center lg:my-8">
       <form
-        className="w-[600px] h-full relative flex flex-col p-4 bg-light-50 dark:bg-transparent dark:shadow-[0_0_10px_0px_#fff] rounded"
+        className="lg:w-[500px] h-full relative flex flex-col p-4 bg-light-50 dark:bg-transparent rounded shadow-xl shadow-gray-600  dark:shadow-red-600"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <h2 className="w-full flex justify-center mb-4 mt-2">
-          Regístrate y crea una cuenta nueva
-        </h2>
+        <h1 className="w-full flex justify-center mb-4 mt-2 text-2xl">
+          Regístrate
+        </h1>
         <div className="w-full flex justify-between p-4 py-3">
           <div className="flex flex-col px-4">
             <input
-              className="py-2 px-3 rounded w-full"
+              className="py-2 px-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-primary-500 focus:shadow-lg focus:shadow-primary-500 dark:focus:ring-red-700 dark:focus:shadow-red-700"
               type="text"
               placeholder="Nombre"
               {...register("firstName", { required: "El nombre es requerido" })}
@@ -106,7 +106,7 @@ const CreateUser = ({ theme }) => {
 
           <div className="flex flex-col px-4">
             <input
-              className="py-2 px-3 rounded w-full"
+              className="py-2 px-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-primary-500 focus:shadow-lg focus:shadow-primary-500 dark:focus:ring-red-700 dark:focus:shadow-red-700"
               type="text"
               placeholder="Apellido"
               {...register("lastName", {
@@ -123,7 +123,7 @@ const CreateUser = ({ theme }) => {
 
         <div className="w-full flex flex-col my-4 px-8">
           <input
-            className="py-2 px-3 rounded w-full"
+            className="py-2 px-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-primary-500 focus:shadow-lg focus:shadow-primary-500 dark:focus:ring-red-700 dark:focus:shadow-red-700"
             type="text"
             placeholder="Email"
             {...register("email", {
@@ -145,7 +145,7 @@ const CreateUser = ({ theme }) => {
           <div className="w-full flex flex-col m-4 ml-0">
             <div className="relative">
               <input
-                className="py-2 px-3 rounded w-full"
+                className="py-2 px-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-primary-500 focus:shadow-lg focus:shadow-primary-500 dark:focus:ring-red-700 dark:focus:shadow-red-700"
                 type={showPwd ? "text" : "password"}
                 placeholder="Contraseña"
                 {...register("password", {
@@ -198,7 +198,7 @@ const CreateUser = ({ theme }) => {
           <div className="w-full flex flex-col m-4 mr-0">
             <div className="relative">
               <input
-                className="py-2 px-3 rounded w-full"
+                className="py-2 px-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-primary-500 focus:shadow-lg focus:shadow-primary-500 dark:focus:ring-red-700 dark:focus:shadow-red-700"
                 type={showPwds ? "text" : "password"}
                 placeholder="Confirmar Contraseña"
                 {...register("confirmPassword", {
@@ -251,8 +251,8 @@ const CreateUser = ({ theme }) => {
           </div>
         </div>
 
-        <div className="w-full flex items-center justify-center space-x-12 my-4">
-          <div className="w-40 h-40 flex items-center rounded-full border-8 border-gray-400">
+        <div className="w-full flex items-center justify-center space-x-12">
+          <div className="w-32 h-32 flex items-center rounded-full border-2 border-primary-500 dark:border-red-700 bg-primary-400/50 dark:bg-red-600/60">
             {uploadedPhoto ? (
               <img
                 src={uploadedPhoto}
@@ -271,18 +271,17 @@ const CreateUser = ({ theme }) => {
           </div>
           <div className="flex justify-center mt-4 mb-6">
             <button
-              className="rounded px-3 py-2 bg-primary-600 hover:bg-primary-500 text-white font-semibold"
+              className="rounded px-3 py-2 bg-primary-600 hover:bg-primary-500 text-white font-semibold shadow-lg shadow-light-600  dark:shadow-red-600 dark:bg-red-700 hover:dark:bg-red-600"
               type="button"
               id="btn-photo"
             >
-              {" "}
               Subir foto
             </button>
           </div>
         </div>
-        <div className="w-full flex justify-center mt-4">
+        <div className="w-full flex justify-center">
           <button
-            className="w-full rounded py-2 px-3 m-6 mb-2 bg-primary-600 hover:bg-primary-500 text-white font-semibold"
+            className="w-full rounded py-2 px-3 m-6 mb-2 bg-primary-600 hover:bg-primary-500 text-white font-semibold shadow-lg shadow-light-600  dark:shadow-red-600 dark:bg-red-700 hover:dark:bg-red-600"
             type="submit"
           >
             Registrarse

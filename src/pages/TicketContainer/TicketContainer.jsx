@@ -1,7 +1,9 @@
-import { useSelector, useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Toaster, toast } from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import Ticket from "../../components/Ticket/Ticket";
-import Cart from "../../components/Cart/Cart";
+import TicketModal from "../../components/TicketModal/TicketModal";
 import {
   addCart,
   getUserById,
@@ -10,8 +12,7 @@ import {
   removeOneCart,
   saveCart,
 } from "../../redux/actions";
-import React, { useEffect, useState } from "react";
-import { Toaster, toast } from "react-hot-toast";
+import TicketWeb from "../../components/TicketWeb/TicketWeb";
 
 const TicketContainer = () => {
   const userData = JSON.parse(window.localStorage.getItem("user"));
@@ -20,6 +21,7 @@ const TicketContainer = () => {
   const storeProductCount = localStorage.getItem("productCount");
   const dispatch = useDispatch();
   const [productCount, setProductCount] = useState(0);
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const navigate = useNavigate();
   const tickets = [
     {
@@ -128,11 +130,11 @@ const TicketContainer = () => {
   }, [cart]);
 
   return (
-    <div className="w-full h-[90vh] mt-16 flex">
+    <div className="w-full min-h-screen mt-14 flex flex-col lg:flex-row">
       <Toaster />
-      <div className="w-2/3 flex flex-col">
-        <div className="flex items-center justify-center mt-20">
-          <div className="w-full flex flex-col items-center">
+      <div className="w-full lg:w-2/3 flex flex-col">
+        <div className="flex flex-col md:flex-row md:mt-40 items-center justify-center mt-6 lg:mt-20">
+          <div className="w-full flex flex-col items-center mb-10">
             <h4 className="mb-4">Sumate a cineFan</h4>
             {cinefan?.map(({ idTicket, name, description, price, image }) => (
               <Ticket
@@ -146,7 +148,7 @@ const TicketContainer = () => {
               />
             ))}
           </div>
-          <div className="w-full flex flex-col items-center">
+          <div className="w-full flex flex-col items-center mb-10">
             <h4 className="mb-4">General</h4>
             {general?.map(({ idTicket, name, description, price, image }) => (
               <Ticket
@@ -163,77 +165,64 @@ const TicketContainer = () => {
         </div>
       </div>
 
-      <div className="w-1/3 mt-6 mb-10 flex flex-col items-center">
-        <div className="w-80 mx-auto rounded shadow-lg bg-primary-50 dark:bg-dark-950 dark:shadow-gray-700 flex flex-col ">
-          {storedMovie && (
-            <div className="w-full flex flex-col items-center py-2">
-              <img
-                src={storedMovie.image}
-                alt={storedMovie.title}
-                className="h-72 rounded"
-              />
-              <p className=" px-2 py-1 font-bold text-base mb-1 mt-1 text-gray-700 dark:text-white">
-                {storedMovie.title}
-              </p>
-            </div>
-          )}
-          <div className="px-2 py1">
-            <hr />
-            {cart?.map((item, index) => (
-              <Cart
-                key={index}
-                id={item.id}
-                price={item.price}
-                name={item.name}
-                count={item.count}
-                delRemoveCart={delRemoveCart}
-                addToCard={addToCard}
-                productCount={productCount}
-                setProductCount={setProductCount}
-              />
-            ))}
-          </div>
-
-          <div>
-            <div className="px-2 pt-2 font-bold text-sm mb-1 text-gray-700 dark:text-white">
-              Subtotal: $ {subtotal.toLocaleString("en-US")}
-            </div>
-            <div className="px-2 font-bold text-sm mb-1 text-gray-700 dark:text-white">
-              Cargo por servicio: $ {servicio.toLocaleString("en-US")}
-            </div>
-            <div className="px-2 font-bold text-lg mb-1 text-gray-700 dark:text-white">
-              {/* {userData && userData?.cinePlus !== "Estandar" ? (
-                <p>
-                  TOTAL:{" "}
-                  <span className="line-through italic">
-                    $ {total.toLocaleString("en-US")}
-                  </span>{" "}
-                </p>
-              ) : (
-                <p>
-                  TOTAL: <span>$ {total.toLocaleString("en-US")}</span>
-                </p>
-              )} */}
-              <p>
-                TOTAL: <span>$ {total.toLocaleString("en-US")}</span>
-              </p>
-            </div>
-            {/* {userData && userData?.cinePlus !== "Estandar" ? (
-              <div className="px-2 font-bold text-base mb-1 text-gray-700 dark:text-white">
-                Con descuento: $ {descuento.toLocaleString("en-US")}
-              </div>
-            ) : null} */}
-          </div>
-          <div className="px-4 py-3 mb-2 flex justify-center items-center">
-            <button
-              className="w-80 bg-primary-600 hover:bg-primary-500 text-white font-bold py-3 px-10 rounded text-xs"
-              onClick={handleClick}
+      {/* Botón de carrito flotante */}
+      {!isCartOpen && (
+        <button
+          className="fixed lg:hidden top-16  right-4 sm:right-8  bg-primary-600 hover:bg-primary-500 dark:shadow-xl shadow-xl shadow-light-600  dark:shadow-red-600 dark:bg-red-700 text-white font-bold p-2 rounded cursor-pointer z-10"
+          onClick={() => setIsCartOpen(!isCartOpen)}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="1.5em"
+            height="1.5em"
+            viewBox="0 0 24 24"
+          >
+            <g
+              fill="none"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
             >
-              Siguiente
-            </button>
-          </div>
-        </div>
-      </div>
+              <path d="M4 19a2 2 0 1 0 4 0a2 2 0 1 0-4 0m11 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0" />
+              <path d="M17 17H6V3H4" />
+              <path d="m6 5l14 1l-1 7H6" />
+            </g>
+          </svg>
+        </button>
+      )}
+
+      {isCartOpen && (
+        <TicketModal
+          storedMovie={storedMovie}
+          cart={cart}
+          subtotal={subtotal}
+          servicio={servicio}
+          total={total}
+          handleClick={handleClick}
+          delRemoveCart={delRemoveCart}
+          addToCard={addToCard}
+          productCount={productCount}
+          setProductCount={setProductCount}
+          setIsCartOpen={setIsCartOpen}
+          isCartOpen={isCartOpen}
+        />
+      )}
+
+      <TicketWeb
+        storedMovie={storedMovie}
+        cart={cart}
+        subtotal={subtotal}
+        servicio={servicio}
+        total={total}
+        handleClick={handleClick}
+        delRemoveCart={delRemoveCart}
+        addToCard={addToCard}
+        productCount={productCount}
+        setProductCount={setProductCount}
+        setIsCartOpen={setIsCartOpen}
+        isCartOpen={isCartOpen}
+      />
     </div>
   );
 };

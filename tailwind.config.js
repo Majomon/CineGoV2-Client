@@ -9,6 +9,16 @@ export default {
   theme: {
     extend: {
       keyframes: {
+        menuBurgerActivated: {
+          "0%": {
+            transform: "translateY(0%) scaleY(0)",
+            transformOrigin: "top",
+          },
+          "100%": {
+            transform: "translateY(0%) scaleY(1)",
+            transformOrigin: "top",
+          },
+        },
         tambaleo: {
           "0%": { transform: "translateX(0) rotate(-2deg)" },
           "50%": { transform: "translateX(10px) rotate(2deg)" },
@@ -49,6 +59,7 @@ export default {
         },
       },
       animation: {
+        menuBurgerActivated: "menuBurgerActivated .2s linear ",
         tambaleo: "tambaleo 1.5s infinite",
         colorAnimation: "colorAnimation 1s infinite",
         cardMovieAnimateHover: "cardMovieAnimateHover .5s linear",

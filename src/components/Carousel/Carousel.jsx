@@ -16,9 +16,8 @@ const Carousel = ({ images }) => {
   const handleIndexClick = (index) => {
     setCurrentImageIndex(index);
   };
-
   return (
-    <div className="w-full px-4 md:w-3/4 h-[250px] md:h-[420px] relative overflow-hidden flex flex-col items-center mt-2">
+    <div className="w-full md:w-10/12 h-[250px] md:h-[500px] relative overflow-hidden flex flex-col items-center mt-2">
       <div className="w-full h-full">
         {images.map((image, index) => (
           <img

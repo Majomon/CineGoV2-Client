@@ -21,12 +21,12 @@ function MovieCard({ id, title, image, clasification, duration, ratings }) {
   };
 
   return (
-    <div className="w-52 h-72 m-4 animate-fade animate-once animate-delay-500">
+    <div className="w-52 h-72 m-4 animate-fade animate-once animate-delay-500 shadow-lg shadow-light-600  dark:shadow-red-600 dark:bg-red-700 hover:dark:bg-red-600">
       <div
-        className={`w-full h-full relative group transition duration-500 ease-in 
+        className={`w-full h-full relative border border-black group transition duration-500 ease-in 
     ${
       isHovered
-        ? "shadow-xl hover:shadow-light-600 dark:hover:shadow-xl dark:hover:shadow-red-600"
+        ? "shadow-xl hover:shadow-light-600 dark:hover:shadow-xl dark:hover:shadow-red-700"
         : ""
     }`}
         onMouseEnter={handleMouseEnter}
@@ -40,7 +40,7 @@ function MovieCard({ id, title, image, clasification, duration, ratings }) {
             style={{ filter: isHovered ? "blur(2px) " : "none" }}
           />
           <div
-            className={`w-full h-full p-2 absolute bottom-0 overflow-hidden flex flex-col justify-center items-center text-center bg-black bg-opacity-80 transition-opacity duration-500 ease-linear ${
+            className={`w-full h-full absolute bottom-0 overflow-hidden flex flex-col justify-center items-center text-center bg-black bg-opacity-80 transition-opacity duration-500 ease-linear ${
               isHovered
                 ? "animate-cardMovieAnimateHover"
                 : "animate-cardMovieAnimateNoHover opacity-0"

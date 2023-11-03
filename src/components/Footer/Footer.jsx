@@ -8,9 +8,9 @@ import "@fortawesome/fontawesome-free/css/all.css";
 
 function Footer({ theme }) {
   return (
-    <footer className="w-full border-t border-t-light-200 dark:border-t-light-900 bg-slate-300 dark:bg-black">
+    <footer className="w-full  bg-gray-800 dark:bg-black">
       <div className="w-full flex lg:justify-evenly relative">
-        <div className="w-1/4 hidden lg:flex pl-12 absolute left-0">
+        {/*     <div className="w-1/4 hidden xl:flex pl-12 absolute left-0">
           <Link className="w-40" to="/">
             {theme === "dark" ? (
               <img src={cinego_blanco} alt="CineGO" />
@@ -18,41 +18,43 @@ function Footer({ theme }) {
               <img src={cinego_negro} alt="CineGO" />
             )}
           </Link>
-        </div>
-        <div className="w-full lg:w-3/5 flex items-center justify-around py-2">
-          <span className="p-2 md:p-4 lg:p-6 text-sm">
-            <Link className="hover:text-light-400" to="/">
+        </div> */}
+        <div className="w-full lg:w-3/5 flex flex-col sm:flex-row items-center justify-around py-2">
+          <span className="p-2 md:p-4 text-sm">
+            <Link
+              className="text-base  text-gray-200 hover:text-gray-300 hover:border-b hover:border-b-gray-300  dark:hover:text-red-700  dark:hover:border-b-red-700"
+              to="/"
+            >
               Cartelera
             </Link>
           </span>
           <span className="p-2 md:p-4 lg:p-6 text-sm">
-            <Link className="hover:text-light-400" to="/candy">
+            <Link
+              className="text-base  text-gray-200 hover:text-gray-300 hover:border-b hover:border-b-gray-300  dark:hover:text-red-700  dark:hover:border-b-red-700"
+              to="/candy"
+            >
               Candy
             </Link>
           </span>
           <span className="p-2 md:p-4 lg:p-6 text-sm">
-            <Link className="hover:text-light-400" to="/cinePlus">
+            <Link
+              className="text-base  text-gray-200 hover:text-gray-300 hover:border-b hover:border-b-gray-300  dark:hover:text-red-700  dark:hover:border-b-red-700"
+              to="/cinePlus"
+            >
               CinePlus
             </Link>
           </span>
           <span className="p-2 md:p-4 lg:p-6 text-sm">
-            <Link className="hover:text-light-400" to="/faq">
-              FAQ
-            </Link>
-          </span>
-          <span className="p-2 md:p-4 lg:p-6 text-sm">
-            <Link className="hover:text-light-400" to="/contact">
+            <Link
+              className="text-base  text-gray-200 hover:text-gray-300 hover:border-b hover:border-b-gray-300  dark:hover:text-red-700  dark:hover:border-b-red-700"
+              to="/contact"
+            >
               Contacto
             </Link>
           </span>
           <span className="p-2 md:p-4 lg:p-6 text-sm">
-            <Link className="hover:text-light-400" to="/about">
-              Desarrolladores
-            </Link>
-          </span>
-          <span className="p-2 md:p-4 lg:p-6 text-sm">
             <Link
-              className="hover:text-light-400"
+              className="text-base text-gray-200 hover:text-gray-300 hover:border-b hover:border-b-gray-300  dark:hover:text-red-700  dark:hover:border-b-red-700"
               to="https://github.com/sebatora/CineGO"
               target="_blank"
             >
@@ -63,7 +65,7 @@ function Footer({ theme }) {
       </div>
 
       <div className="mx-auto border-t border-t-light-200 dark:border-t-light-900 text-center">
-        <p className="mt-2 mb-2 text-xs">
+        <p className="mt-2 mb-2 text-xs text-gray-200">
           Todos los derechos reservados © 2023 <b>| CineGO</b>
         </p>
       </div>

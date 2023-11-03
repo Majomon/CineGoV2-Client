@@ -35,7 +35,7 @@ const Login = () => {
       window.localStorage.removeItem("cart");
       window.localStorage.removeItem("productCount");
     } catch (error) {
-      toast.error(error)
+      toast.error(error);
     } finally {
       setLoading(false);
     }
@@ -56,14 +56,14 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if(userData?.email){
+    if (userData?.email) {
       Swal.fire({
         position: "top",
-        icon: 'success',
-        title: 'Iniciaste sesión exitosamente',
+        icon: "success",
+        title: "Iniciaste sesión exitosamente",
         showConfirmButton: false,
-        timer: 1500
-      })
+        timer: 1500,
+      });
       navigate("/");
     }
   }, [userData]);
@@ -74,9 +74,9 @@ const Login = () => {
       {loading ? (
         <Spinner />
       ) : (
-        <div className="w-full h-full min-h-screen flex justify-center items-center pt-12">
+        <div className="w-full h-full min-h-screen flex justify-center items-center lg:mt-10">
           <form
-            className="w-[400px] min-h-[550px] h-full relative flex flex-col p-6 bg-light-50 dark:bg-transparent dark:shadow-[0_0_10px_0px_#fff] rounded"
+            className="w-[400px] min-h-[400px] my-20 lg:my-0 m-4 h-full relative flex flex-col p-6 bg-light-50 dark:bg-transparent  rounded  shadow-xl shadow-gray-600  dark:shadow-red-600"
             onSubmit={handleSubmit(onSubmit)}
           >
             <div className="mb-6 mt-4 border-b">
@@ -85,16 +85,18 @@ const Login = () => {
               </h2>
               <button
                 type="button"
-                className="w-full my-10 px-3 flex rounded justify-center items-center bg-primary-600 hover:bg-primary-500 font-bold text-white"
+                className="w-full my-10 px-3 flex rounded justify-center items-center bg-primary-600 hover:bg-primary-500  shadow-lg shadow-light-600  dark:shadow-red-600 dark:bg-red-700 hover:dark:bg-red-600"
                 onClick={handleLoginGoogle}
               >
                 <img className="w-10" src={LogoGoogle} alt="Logo Google" />
-                Iniciar sesión con Google
+                <p className="text-sm font-bold text-white">
+                  Iniciar sesión con Google
+                </p>
               </button>
             </div>
             <div className="flex flex-col mb-4">
               <input
-                className="py-2 px-3 rounded w-full"
+                className="py-2 px-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-primary-500 focus:shadow-lg focus:shadow-primary-500 dark:focus:ring-red-700 dark:focus:shadow-red-700"
                 type="text"
                 placeholder="Ingresa tu email"
                 {...register("email", {
@@ -111,7 +113,7 @@ const Login = () => {
             <div className="flex flex-col mb-4">
               <div className="w-full relative">
                 <input
-                  className="py-2 px-3 rounded w-full"
+                  className="py-2 px-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-primary-500 focus:shadow-lg focus:shadow-primary-500 dark:focus:ring-red-700 dark:focus:shadow-red-700"
                   type={showPwd ? "text" : "password"}
                   placeholder="Ingresa tu contraseña"
                   {...register("password", {
@@ -161,7 +163,7 @@ const Login = () => {
 
               <div className="w-full flex justify-end py-3">
                 <Link to="/forgotPassword">
-                  <span className="text-primary-500 dark:text-primary-500 text-base">
+                  <span className="text-primary-600 hover:text-primary-400 dark:text-red-600 hover:dark:text-red-500 text-base">
                     ¿Olvidaste tu contraseña?
                   </span>
                 </Link>
@@ -169,15 +171,15 @@ const Login = () => {
             </div>
 
             <button
-              className="w-full rounded py-2 px-3 mb-6 bg-primary-600 hover:bg-primary-500 text-white font-semibold"
+              className="w-full rounded py-2 px-3 mb-6 bg-primary-600 hover:bg-primary-500 text-white font-bold dark:shadow-xl shadow-lg shadow-light-600  dark:shadow-red-600 dark:bg-red-700 hover:dark:bg-red-600"
               type="submit"
             >
-              Iniciar Sesión
+              <p className="text-sm font-bold text-white"> Iniciar Sesión</p>
             </button>
             <div className="w-full flex justify-center space-x-1">
               <p className="text-base text-light-700">¿No tenés cuenta?</p>
               <Link to="/createUser">
-                <span className="text-base text-primary-500 dark:text-primary-500">
+                <span className="text-base text-primary-600 hover:text-primary-400 dark:text-red-600 hover:dark:text-red-500 pl-4">
                   Regístrate
                 </span>
               </Link>

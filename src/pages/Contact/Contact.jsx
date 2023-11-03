@@ -50,10 +50,10 @@ const Contact = () => {
   };
 
   return (
-    <div className="h-full my-20 mx-10 px-10 py-4 flex">
+    <div className="h-full my-20 mx-4 lg:mx-10 lg:px-10 lg:py-4 flex flex-col lg:flex-row gap-6">
       <Toaster />
       <form
-        className="w-[600px] min-h-[500px] h-full relative flex flex-col justify-around p-4 bg-light-50 dark:bg-transparent dark:shadow-[0_0_10px_0px_#fff] rounded"
+        className="w-full h-full lg:w-[600px] lg:min-h-[500px] p-2 relative flex flex-col justify-around lg:p-4 bg-light-50 dark:bg-transparent rounded shadow-xl shadow-gray-600  dark:shadow-red-600"
         ref={form}
         onSubmit={handleSubmit(sendMessage)}
       >
@@ -118,7 +118,7 @@ const Contact = () => {
           )}
         </div>
         <button
-          className="w-full rounded py-2 px-3 mt-3 bg-primary-600 hover:bg-primary-500 text-white font-semibold"
+          className="w-full rounded py-2 px-3 mt-3 text-white font-semibold bg-primary-600 hover:bg-primary-500  shadow-lg shadow-light-600  dark:shadow-red-600 dark:bg-red-700 hover:dark:bg-red-600"
           type="submit"
         >
           Enviar
@@ -152,9 +152,10 @@ const Contact = () => {
           </div>
         </div>
       </form>
-      <div className="w-full h-full flex items-center justify-center">
+      
+      <div className="hidden lg:flex w-full min-h-[500px] items-center justify-center rounded shadow-xl shadow-gray-600  dark:shadow-red-600">
         <MapContainer
-          className="min-w-[600px] w-full min-h-[640px] h-full z-10 ml-8"
+          className="w-full h-full z-10"
           center={[-34.61315, -58.37723]}
           zoom={13}
           scrollWheelZoom={false}

@@ -49,9 +49,9 @@ function CinePlusBlack() {
   };
 
   return (
-    <div className="w-1/4 flex justify-around mx-auto">
+    <div className="w-[260px] flex justify-around mx-auto my-10 bg-gray-300 rounded-xl shadow-xl hover:shadow-gray-600  hover:dark:shadow-red-600">
       <Toaster />
-      <div className="w-96 mt-2 rounded-lg relative">
+      <div className="w-96 rounded-lg relative">
         <div className="">
           <div className="h-20 grid items-center bg-black dark:bg-white border-2 border-black dark:border-white rounded-t-xl">
             <h2 className="font-bold mx-auto text-white dark:text-black">
@@ -115,14 +115,14 @@ function CinePlusBlack() {
             {pathname !== "/profile" ? (
               <button
                 onClick={handleSubmit}
-                className="h-1/4 bg-black hover:bg-black/80 dark:bg-white dark:hover:bg-white/80 text-white dark:text-black w-7/12 mx-auto -mb-10 p-2 rounded-xl text-base font-bold"
+                className="h-1/4 bg-black hover:bg-black/80 dark:bg-white dark:hover:bg-white/80 text-white dark:text-black w-7/12 mx-auto -mb-10 p-2 rounded-xl text-base font-bold shadow-md shadow-gray-600"
               >
                 ¡Quiero suscribirme!
               </button>
             ) : userData.cinePlus === "Estandar" ? (
               <button
                 onClick={handleSubmit}
-                className="h-1/4 bg-black hover:bg-black/80 dark:bg-white dark:hover:bg-white/80 text-white dark:text-black w-7/12 mx-auto -mb-10 p-2 rounded-xl text-base font-bold"
+                className="h-1/4 bg-black hover:bg-black/80 dark:bg-white dark:hover:bg-white/80 text-white dark:text-black w-7/12 mx-auto -mb-10 p-2 rounded-xl text-base font-bold shadow-md shadow-gray-600"
               >
                 ¡Quiero suscribirme!
               </button>

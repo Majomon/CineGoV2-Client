@@ -18,22 +18,33 @@ function MoviesContainer() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getMovies());
-    dispatch(getGenres());
-    setLoading(false);
-  }, []);
+    const fetchData = async () => {
+      if (allMovies.length === 0) {
+        try {
+          await dispatch(getMovies());
+          await dispatch(getGenres());
+          setLoading(false);
+        } catch (error) {
+          setLoading(false);
+        }
+      } else {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, [dispatch]);
 
   return (
     <>
       {loading ? (
         <Spinner />
       ) : (
-        <div className="w-full lg:w-11/12 mt-8">
-          <div className="w-full flex flex-col lg:flex-row justify-center my-2">
+        <div className="w-full lg:w-10/12 mt-8">
+          <div className="w-10/12 mx-auto  flex flex-col xl:flex-row  items-center">
             <Filter />
             <SearchBar />
           </div>
-          <div className="w-full flex flex-wrap justify-center my-4">
+          <div className="w-full grid  grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-items-center my-4 md:px-10">
             {moviesActive.length ? (
               moviesActive.map(
                 ({

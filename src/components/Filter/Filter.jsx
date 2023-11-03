@@ -77,7 +77,7 @@ const Filter = () => {
   }, [orderData]);
 
   return (
-    <div className="w-full px-14 lg:p-0 lg:w-2/3 lg:ml-20 lg:order-none flex flex-wrap md:flex-nowrap justify-center md:justify-evenly md:space-x-4 order-1">
+    <div className="w-full md:px-0 lg:p-0 xl:order-none flex flex-wrap md:flex-nowrap md:justify-between  order-1 xl:gap-10">
       <select
         ref={orderSelectRef}
         className="w-full mb-2 md:mb-0 md:w-48 bg-transparent dark:text-white border border-light-500 rounded-xl p-2"

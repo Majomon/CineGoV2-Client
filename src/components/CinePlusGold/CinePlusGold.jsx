@@ -39,7 +39,7 @@ function CinePlusGold() {
             cinePlus: "Gold",
             quantity: 1,
             type: "subscription",
-            price: 499
+            price: 499,
           },
         ],
         totalPrice: subGold.price,
@@ -53,10 +53,10 @@ function CinePlusGold() {
   };
 
   return (
-    <div className="w-1/4 flex justify-around mx-auto">
+    <div className="w-[260px] flex justify-around mx-auto my-10 bg-yellow-200 rounded-xl shadow-xl hover:shadow-gray-600  hover:dark:shadow-red-600">
       <Toaster />
 
-      <div className="w-96 mt-2 rounded-lg relative">
+      <div className="w-96 rounded-lg relative">
         <div className="">
           <div className="h-20 grid items-center bg-yellow-300 border-2 border-yellow-300 rounded-t-xl">
             <h2 className="font-bold mx-auto text-black dark:text-white">
@@ -120,7 +120,7 @@ function CinePlusGold() {
             {pathname !== "/profile" ? (
               <button
                 onClick={handleSubmit}
-                className="w-7/12 h-1/4 mx-auto bg-yellow-300 hover:bg-yellow-200 p-2 -mb-10 rounded-xl"
+                className="w-7/12 h-1/4 mx-auto bg-yellow-300 hover:bg-yellow-200 p-2 -mb-10 rounded-xl shadow-md shadow-gray-600"
               >
                 <span className="text-base font-bold">
                   ¡Quiero suscribirme!
@@ -129,7 +129,7 @@ function CinePlusGold() {
             ) : userData.cinePlus === "Estandar" ? (
               <button
                 onClick={handleSubmit}
-                className="w-7/12 h-1/4 mx-auto bg-yellow-300 hover:bg-yellow-200 p-2 -mb-10 rounded-xl"
+                className="w-7/12 h-1/4 mx-auto bg-yellow-300 hover:bg-yellow-200 p-2 -mb-10 rounded-xl shadow-md shadow-gray-600"
               >
                 <span className="text-base font-bold">
                   ¡Quiero suscribirme!

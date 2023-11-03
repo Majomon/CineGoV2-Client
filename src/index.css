@@ -29,7 +29,7 @@
   }
   p,
   span {
-    @apply dark:text-white text-slate-900 text-base font-bold md:text-lg;
+    @apply dark:text-white text-slate-900  font-bold md:text-lg;
   }
   a {
     @apply dark:text-white text-slate-900 decoration-transparent;
