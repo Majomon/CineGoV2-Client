@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import { BiCheckCircle } from "react-icons/bi";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
 import "sweetalert2/dist/sweetalert2.css";
-import { logoutUser, putUser } from "../../redux/actions";
-import style from "./ProfileSecurity.module.css";
 import { validateForm } from "../../helpers/validationSecurity";
+import { logoutUser, putUser } from "../../redux/actions";
 
 function ProfileSecurity() {
   const userData = JSON.parse(window.localStorage.getItem("user"));
@@ -61,42 +59,42 @@ function ProfileSecurity() {
   };
 
   return (
-    <div className={style.container}>
-      <h2 className="w-full flex items-center justify-center h-16 bg-light-200 dark:bg-slate-800">
-        Suscripción
+    <div className="w-full h-full pb-32 md:pb-0">
+      <h2 className="h-16 text-gray-50 flex items-center justify-center bg-primary-500  dark:bg-red-700">
+        Seguridad
       </h2>
       <form
         onSubmit={handleSubmit}
-        className={style.containerFormProfileSecurity}
+        className="w-full px-10 my-10 flex justify-center items-center"
       >
-        <div className={style.boxPass}>
-          <div className={style.passOld}>
+        <div className="w-60 flex flex-col mt-6">
+          <div className="w-full h-full my-1 flex flex-col">
             <label>Contraseña anterior:</label>
             <input
-              className={style.inputSecurity}
+              className="w-full h-full p-2 mb-2 border-radius-3 bg-gray-400 rounded-md "
               type="password"
               value={1231112112}
               disabled
             />
           </div>
-          <div className={style.passNew}>
-            <label className={style.labelSecurity} htmlFor="password">
+          <div className="w-full h-full my-1 flex flex-col">
+            <label className="labelSecurity" htmlFor="password">
               Nueva contraseña:
             </label>
             <input
-              className={style.inputSecurity}
+              className="w-full h-full p-2 mb-2 bg-gray-50 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:shadow-lg focus:shadow-primary-500 dark:focus:ring-red-700 dark:focus:shadow-red-700"
               type="password"
               name="password"
               value={user.password}
               onChange={handleChange}
             />
           </div>
-          <div className={style.passNew}>
-            <label className={style.labelSecurity} htmlFor="confirmPassword">
+          <div className="w-full h- my-1 flex flex-col">
+            <label className="labelSecurity" htmlFor="confirmPassword">
               Confirmar contraseña:
             </label>
             <input
-              className={style.inputSecurity}
+              className="w-full h-full p-2 mb-2 bg-gray-50 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:shadow-lg focus:shadow-primary-500 dark:focus:ring-red-700 dark:focus:shadow-red-700"
               type="password"
               name="confirmPassword"
               value={user.confirmPassword}
@@ -105,7 +103,7 @@ function ProfileSecurity() {
           </div>
           <button
             type="submit"
-            className="w-2/4 bg-primary-600 hover:bg-primary-500 h-8 my-6 mx-auto rounded-md font-bold text-white"
+            className="p-4 my-4 rounded-sm bg-primary-600 hover:bg-primary-500 border-radius-3 font-bold text-white shadow-xl shadow-gray-600  dark:shadow-red-600 dark:bg-red-700 hover:dark:bg-red-600"
           >
             Cambiar contraseña
           </button>

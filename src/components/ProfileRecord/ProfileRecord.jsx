@@ -39,8 +39,8 @@ function ProfileRecord() {
   }, []);
 
   return (
-    <div className="min-h-screen pb-10">
-      <h2 className="w-full flex items-center justify-center h-16 bg-light-200 dark:bg-slate-800">
+    <div className="w-full h-full pb-10">
+      <h2 className="w-full text-gray-50 flex items-center justify-center h-16  bg-primary-500  dark:bg-red-700">
         Historial de Compras
       </h2>
       {!userData?.purchases?.length ? (

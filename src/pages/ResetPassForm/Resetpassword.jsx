@@ -1,50 +1,10 @@
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import toast, { Toaster } from "react-hot-toast";
-import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import logoBlanco from "../../assets/cinego_blanco_logo.png";
-import logoNegro from "../../assets/cinego_negro_logo.png";
-import { forgotPassUser } from "../../redux/actions";
+import { Toaster } from "react-hot-toast";
 import Spinner from "../../components/Spinner/Spinner";
+import { useResetPassword } from "../../hooks/useResetPassword";
 
-const Resetpassword = ({ theme }) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm({
-    defaultValues: {
-      email: "",
-      firstName: "",
-    },
-  });
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  const [loading, setLoading] = useState(false);
-
-  const onSubmit = async (data) => {
-    try {
-      setLoading(true);
-      const response = await dispatch(forgotPassUser(data));
-
-      if (typeof response === "string") {
-        toast.error(
-          "Los datos son incorrectos. Por favor, intenta nuevamente."
-        );
-      } else {
-        reset();
-        navigate("/login");
-        toast.success("Su nueva contraseña fue enviada", {
-          duration: 2000,
-        });
-      }
-    } finally {
-      setLoading(false);
-    }
-  };
+const Resetpassword = () => {
+  const { errors, handleSubmit, loading, onSubmit, register } =
+    useResetPassword();
 
   return (
     <>

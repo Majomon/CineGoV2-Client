@@ -1,13 +1,13 @@
-import { useRef } from "react";
 import email from "@emailjs/browser";
-import { Toaster, toast } from "react-hot-toast";
-import { useForm } from "react-hook-form";
-import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import marker from "../../assets/location_icon.png";
+import { useRef } from "react";
+import { useForm } from "react-hook-form";
+import { Toaster, toast } from "react-hot-toast";
+import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import { Link } from "react-router-dom";
 import facebook from "../../assets/contacto/facebook.png";
 import instagram from "../../assets/contacto/instagram.png";
+import marker from "../../assets/location_icon.png";
 
 const myIcon = new L.Icon({
   iconUrl: marker,
@@ -50,10 +50,10 @@ const Contact = () => {
   };
 
   return (
-    <div className="h-full my-20 mx-4 lg:mx-10 lg:px-10 lg:py-4 flex flex-col lg:flex-row gap-6">
+    <div className="h-full my-20 mx-4 py-10 lg:mx-10 lg:px-10 flex flex-col lg:flex-row gap-6">
       <Toaster />
       <form
-        className="w-full h-full lg:w-[600px] lg:min-h-[500px] p-2 relative flex flex-col justify-around lg:p-4 bg-light-50 dark:bg-transparent rounded shadow-xl shadow-gray-600  dark:shadow-red-600"
+        className="sm:mx-10 md:w-8/12 md:mx-auto h-full lg:w-[600px] lg:min-h-[600px] p-2 relative flex flex-col justify-around lg:p-4 bg-light-50 dark:bg-transparent rounded shadow-xl shadow-gray-600  dark:shadow-red-600"
         ref={form}
         onSubmit={handleSubmit(sendMessage)}
       >

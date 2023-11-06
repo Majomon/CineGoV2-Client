@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
-import SaleGeneral from "../../components/Admin/AdminVentas/SaleGeneral";
-import SaleTicket from "../../components/Admin/AdminVentas/SaleTicket";
-import SaleCandy from "../../components/Admin/AdminVentas/SaleCandy";
-import SaleSubscription from "../../components/Admin/AdminVentas/SaleSubscription";
-import WebVisits from "../../components/Admin/AdminVisitas/WebVisits";
-import { useDispatch } from "react-redux";
-import { logoutUser } from "../../redux/actions";
-import { useAuth } from "../../context/authContext";
-import { Link, useNavigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-import DataMovies from "../../components/Admin/AdminData/DataMovies";
-import DataCandy from "../../components/Admin/AdminData/DataCandy";
-import DataUsers from "../../components/Admin/AdminData/DataUsers";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import DataCandy from "../../components/Admin/AdminData/DataCandy";
+import DataMovies from "../../components/Admin/AdminData/DataMovies";
+import DataUsers from "../../components/Admin/AdminData/DataUsers";
+import SaleCandy from "../../components/Admin/AdminVentas/SaleCandy";
+import SaleGeneral from "../../components/Admin/AdminVentas/SaleGeneral";
+import SaleSubscription from "../../components/Admin/AdminVentas/SaleSubscription";
+import SaleTicket from "../../components/Admin/AdminVentas/SaleTicket";
+import WebVisits from "../../components/Admin/AdminVisitas/WebVisits";
+import { useAuth } from "../../context/authContext";
+import { logoutUser } from "../../redux/actions";
 
 const Dashboard = () => {
   const [activeComponent, setActiveComponent] = useState("saleGeneral");

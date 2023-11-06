@@ -46,8 +46,8 @@ function ProfileSubscription() {
   };
 
   return (
-    <div className="w-full  h-[90vh]">
-      <h2 className="w-full flex items-center justify-center h-16 bg-light-200 dark:bg-slate-800">
+    <div className="w-full">
+      <h2 className="w-full text-gray-50 flex items-center justify-center h-16 bg-primary-500  dark:bg-red-700">
         Suscripción
       </h2>
       {userData.cinePlus === "Estandar" ? (
@@ -56,7 +56,7 @@ function ProfileSubscription() {
             <h3 className="mb-4 font-bold">Tu plan: </h3>
             <TextAnimation word={userData.cinePlus.toUpperCase()} />
           </div>
-          <div className="flex">
+          <div className="flex flex-col lg:flex-row">
             <CinePlusGold />
             <CinePlusBlack />
           </div>

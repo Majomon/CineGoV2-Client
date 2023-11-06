@@ -108,17 +108,18 @@ function ProfileChange() {
   };
 
   return (
-    <div className="w-full h-screen">
-      <h2 className="w-full flex items-center justify-center h-16 bg-light-200 dark:bg-slate-800">
+    <div className="w-full h-full pb-24">
+      <h2 className="w-full  text-gray-50 flex items-center justify-center h-16 bg-primary-500  dark:bg-red-700">
         Perfil
       </h2>
       <form
         className="w-full flex flex-col items-center"
         onSubmit={handleSubmit}
       >
-        <div className="w-full flex flex-col items-center my-6">
+        {/* Imagen */}
+        <div className="w-full h-full flex flex-col items-center my-6">
           <img
-            className="w-32 rounded-full"
+            className="w-36 h-36 rounded-full"
             src={uploadedPhoto || userData.image}
             alt="Profile"
           />
@@ -127,23 +128,24 @@ function ProfileChange() {
               type="button"
               id="btn-photo"
               onClick={handleUploadPhoto}
-              className="bg-primary-600 hover:bg-primary-500 text-center px-4 mt-4 py-2 rounded-md font-bold text-white"
+              className="bg-primary-600 hover:bg-primary-500 text-center px-4 mt-4 py-2 rounded-md font-bold text-white  shadow-xl shadow-gray-600  dark:shadow-red-600 dark:bg-red-700 hover:dark:bg-red-600"
             >
               Cambiar
             </button>
           )}
         </div>
-        <div className="w-full flex flex-col items-center">
-          <div className="w-full flex space-x-10 px-16">
+        <div className="w-full flex flex-col items-center px-10 sm:px-20 ">
+          {/* Nombre y apellido */}
+          <div className="w-full flex flex-col lg:flex-row lg:space-x-10">
             <div className="w-full relative flex flex-col mb-2">
-              <label className="mb-2" htmlFor="firstName">
+              <label className="mb-2 " htmlFor="firstName">
                 Nombre:
               </label>
               <input
                 className={`p-2 mb-2 rounded-md ${
                   disabled
                     ? "bg-light-200 placeholder:text-light-400 dark:bg-slate-900"
-                    : ""
+                    : "focus:outline-none focus:ring-2 focus:ring-primary-500 focus:shadow-lg focus:shadow-primary-500 dark:focus:ring-red-700 dark:focus:shadow-red-700"
                 }`}
                 type="text"
                 name="firstName"
@@ -172,7 +174,7 @@ function ProfileChange() {
                 className={`p-2 mb-2 rounded-md ${
                   disabled
                     ? "bg-light-200 placeholder:text-light-400 dark:bg-slate-900"
-                    : ""
+                    : "focus:outline-none focus:ring-2 focus:ring-primary-500 focus:shadow-lg focus:shadow-primary-500 dark:focus:ring-red-700 dark:focus:shadow-red-700"
                 }`}
                 type="text"
                 name="lastName"
@@ -194,7 +196,8 @@ function ProfileChange() {
               )}
             </div>
           </div>
-          <div className="w-full flex space-x-10 px-16">
+          {/* Email y cine */}
+          <div className="w-full flex flex-col lg:flex-row lg:space-x-10">
             <div className="w-full relative flex flex-col mb-2">
               <label className="mb-2" htmlFor="email">
                 Email:
@@ -203,7 +206,7 @@ function ProfileChange() {
                 className={`p-2 mb-2 rounded-md ${
                   disabled
                     ? "bg-light-200 placeholder:text-light-400 dark:bg-slate-900"
-                    : ""
+                    : "focus:outline-none focus:ring-2 focus:ring-primary-500 focus:shadow-lg focus:shadow-primary-500 dark:focus:ring-red-700 dark:focus:shadow-red-700"
                 }`}
                 type="text"
                 name="email"
@@ -224,7 +227,7 @@ function ProfileChange() {
                 </div>
               )}
             </div>
-            <div className="w-full flex flex-col mb-6">
+            <div className="w-full relative flex flex-col mb-2">
               <label className="mb-2" htmlFor="cinePlus">
                 CinePlus:
               </label>
@@ -242,7 +245,7 @@ function ProfileChange() {
         </div>
         {!disabled && (
           <button
-            className="w-40 mt-10 py-2 rounded-md font-bold bg-green-500 hover:bg-green-600"
+            className="w-40 mt-10 py-2 text-gray-50 bg-primary-600 hover:bg-primary-500  rounded-md font-bold shadow-xl shadow-gray-600  dark:shadow-red-600 dark:bg-red-700 hover:dark:bg-red-600"
             type="submit"
             disabled={disabled}
           >

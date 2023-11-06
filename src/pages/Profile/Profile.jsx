@@ -13,14 +13,14 @@ function Profile() {
   };
 
   return (
-    <div className="w-full h-full min-h-screen flex mt-12">
-      <div className="w-1/5 flex flex-col bg-light-300 dark:bg-slate-900">
-        <h1 className="w-full mt-5 ml-5">Bienvenido</h1>
-        <div className="w-full flex flex-col p-4">
+    <div className="w-full h-full md:min-h-screen flex flex-col lg:flex-row mt-[10vh]">
+      <div className="w-full lg:min-h-screen h-full lg:w-1/5 flex flex-col bg-light-300 dark:bg-slate-900">
+        <h1 className="w-full my-2 lg:mt-5 text-center">Bienvenido</h1>
+        <div className="w-full grid grid-cols-2 place-items-center sm:flex sm:justify-around lg:flex-col px-10 py-2">
           <button
-            className={`w-16 my-4 text-start ${
+            className={`w-24 lg:w-32 my-2 lg:my-4 text-start ${
               activeComponent === "profileChange" &&
-              "font-bold border-b-4 border-light-700 dark:border-dark-700 ml-2 scale-105"
+              "font-bold border-b-4 border-primary-500 dark:border-dark-700 lg:ml-2 scale-105"
             }`}
             onClick={() => handleButtonClick("profileChange")}
             disabled={activeComponent === "profileChange"}
@@ -34,9 +34,9 @@ function Profile() {
             </span>
           </button>
           <button
-            className={`w-28 my-4 text-start ${
+            className={`w-24 lg:w-32 my-2 lg:my-4 text-start ${
               activeComponent === "profileSubscription" &&
-              "font-bold border-b-4 border-light-700 dark:border-dark-700 ml-2 scale-105"
+              "font-bold border-b-4 border-primary-500 dark:border-dark-700 lg:ml-2 scale-105"
             }`}
             onClick={() => handleButtonClick("profileSubscription")}
             disabled={activeComponent === "profileSubscription"}
@@ -53,9 +53,9 @@ function Profile() {
           </button>
           {userData.password && (
             <button
-              className={`w-28 my-4 text-start ${
+              className={`w-24 lg:w-32 my-2 lg:my-4 text-start ${
                 activeComponent === "profileSecurity" &&
-                "font-bold border-b-4 border-light-700 dark:border-dark-700 ml-2 scale-105"
+                "font-bold border-b-4 border-primary-500 dark:border-dark-700 lg:ml-2 scale-105"
               }`}
               onClick={() => handleButtonClick("profileSecurity")}
               disabled={activeComponent === "profileSecurity"}
@@ -70,9 +70,9 @@ function Profile() {
             </button>
           )}
           <button
-            className={`w-24 my-4 text-start ${
+            className={`hidden lg:flex w-24 lg:w-32 my-2 lg:my-4 text-start ${
               activeComponent === "profileRecord" &&
-              "font-bold border-b-4 border-light-700 dark:border-dark-700 ml-2 scale-105"
+              "font-bold border-b-4 border-primary-500 dark:border-dark-700 lg:ml-2 scale-105"
             }`}
             onClick={() => handleButtonClick("profileRecord")}
             disabled={activeComponent === "profileRecord"}
@@ -87,7 +87,7 @@ function Profile() {
           </button>
         </div>
       </div>
-      <div className="w-4/5 ml-auto">
+      <div className="w-full h-fit lg:w-4/5 flex justify-center items-center">
         {activeComponent === "profileChange" && <ProfileChange />}
         {activeComponent === "profileSubscription" && <ProfileSubscription />}
         {activeComponent === "profileSecurity" && <ProfileSecurity />}

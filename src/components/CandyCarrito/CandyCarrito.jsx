@@ -34,7 +34,6 @@ function CandyCarrito({ addCart, productCount, setProductCount }) {
   const delRemoveCart = (name, all = false) => {
     if (all) {
       let nombre = cart.find((product) => product.name === name);
-
       dispatch(removeAllCartCandy(name));
       window.localStorage.removeItem("cart");
       setProductCount(productCount - nombre.count);
@@ -109,9 +108,9 @@ function CandyCarrito({ addCart, productCount, setProductCount }) {
   }, [cart]);
 
   return (
-    <div className="w-1/3 absolute opacity-0 lg:opacity-100 sm:absolute  right-6 mt-20 lg:flex flex-col items-center -z-50 lg:z-10">
+    <div className="w-1/3 absolute opacity-0 lg:opacity-100 sm:absolute  right-6 mt-24 md:mt-32 lg:flex flex-col items-center -z-50 lg:z-10">
       <Toaster />
-      <div className="flex flex-col my-4 rounded overflow-hidden shadow-lg bg-primary-50 dark:bg-dark-950 shadow-light-600 dark:shadow-red-600">
+      <div className="w-10/12 flex flex-col my-4 rounded overflow-hidden shadow-lg bg-primary-50 dark:bg-dark-950 shadow-light-600 dark:shadow-red-600">
         {storedMovie && (
           <div className="w-full flex flex-col items-center">
             <img

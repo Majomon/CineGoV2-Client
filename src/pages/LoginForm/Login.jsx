@@ -1,73 +1,20 @@
-import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import toast, { Toaster } from "react-hot-toast";
-import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
+import { Link } from "react-router-dom";
 import LogoGoogle from "../../assets/google_logo.png";
-import { useAuth } from "../../context/authContext";
-import { loginUser } from "../../redux/actions";
 import Spinner from "../../components/Spinner/Spinner";
-import Swal from "sweetalert2";
+import { useLogin } from "../../hooks/useLogin";
 
 const Login = () => {
-  const userData = JSON.parse(window.localStorage.getItem("user"));
-  const [showPwd, setShowPwd] = useState(false);
   const {
-    register,
+    errors,
+    handleLoginGoogle,
     handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm({
-    defaultValues: {
-      email: "",
-      password: "",
-    },
-  });
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const { loginWithGoogle, loading, setLoading } = useAuth();
-
-  const onSubmit = (data) => {
-    setLoading(true);
-    try {
-      dispatch(loginUser(data));
-      window.localStorage.removeItem("movie");
-      window.localStorage.removeItem("cart");
-      window.localStorage.removeItem("productCount");
-    } catch (error) {
-      toast.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleLoginGoogle = async () => {
-    setLoading(true);
-    try {
-      await loginWithGoogle();
-      window.localStorage.removeItem("movie");
-      window.localStorage.removeItem("cart");
-      window.localStorage.removeItem("productCount");
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    if (userData?.email) {
-      Swal.fire({
-        position: "top",
-        icon: "success",
-        title: "Iniciaste sesión exitosamente",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-      navigate("/");
-    }
-  }, [userData]);
-
+    loading,
+    onSubmit,
+    register,
+    setShowPwd,
+    showPwd,
+  } = useLogin();
   return (
     <>
       <Toaster />

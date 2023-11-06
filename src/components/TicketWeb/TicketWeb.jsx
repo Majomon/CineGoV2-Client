@@ -13,14 +13,14 @@ function TicketWeb({
   setProductCount,
 }) {
   return (
-    <div className="w-1/3 h-full hidden lg:flex py-10 flex-col items-center">
-      <div className="w-72  mx-auto rounded shadow-xl bg-primary-50 dark:bg-dark-950 dark:shadow-gray-700 flex flex-col ">
+    <div className="w-1/3 h-full hidden lg:flex flex-col items-center mx-20">
+      <div className="w-10/12 h-full  mx-auto rounded shadow-xl bg-primary-50 dark:bg-dark-950 dark:shadow-gray-700 flex flex-col ">
         {storedMovie && (
           <div className="w-full flex flex-col items-center">
             <img
               src={storedMovie.image}
               alt={storedMovie.title}
-              className="w-full h-60 rounded-t-lg"
+              className="w-full h-[350px] rounded-t-lg"
             />
             <p className=" px-2 py-1 font-bold text-base mb-1 mt-1 text-gray-700 dark:text-white">
               {storedMovie.title}

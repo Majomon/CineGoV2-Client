@@ -1,93 +1,24 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import React from "react";
+import { Toaster } from "react-hot-toast";
 import ReactStars from "react-stars";
-import Error404 from "../../pages/Error404/Error404";
-import { cleanDetail, getMovieById, postRating } from "../../redux/actions";
-import { Toaster, toast } from "react-hot-toast";
 import Spinner from "../../components/Spinner/Spinner";
+import { useDetail } from "../../hooks/useDetail";
+import Error404 from "../../pages/Error404/Error404";
 
 function Detail() {
-  const detail = useSelector((state) => state.movieById);
-  const userData = JSON.parse(window.localStorage.getItem("user"));
-  const [activeTrailer, setActiveTrailer] = useState(false);
-  const dispatch = useDispatch();
-  const { id } = useParams();
-  const [rating, setRating] = useState(0);
-  const [selectedDay, setSelectedDay] = useState(null);
-  const [selectedShow, setSelectedShow] = useState(null);
-  const navigate = useNavigate();
-  const [loading, setLoading] = useState(true);
-
-  const handleClickDate = (day) => {
-    if (selectedDay === day) {
-      setSelectedDay(null);
-      setSelectedShow(null);
-    } else {
-      setSelectedDay(day);
-      setSelectedShow(null);
-    }
-  };
-
-  const handleClickShow = (show) => {
-    if (selectedShow === show) {
-      setSelectedShow(null);
-    } else {
-      setSelectedShow(show);
-      const storedMovie = JSON.parse(window.localStorage.getItem("movie"));
-      if (storedMovie) {
-        const updatedMovie = {
-          ...storedMovie,
-          showId: show,
-        };
-        window.localStorage.setItem("movie", JSON.stringify(updatedMovie));
-      }
-    }
-  };
-
-  const handleChangeRating = (count) => {
-    if (!userData) {
-      toast.dismiss(); // Limpiar la alerta existente si hay alguna
-      toast.error("Inicia sesión para poder valorar", {
-        duration: 3000,
-      });
-      return;
-    } else {
-      dispatch(postRating({ movieId: detail.id, count }));
-      setRating(count);
-    }
-  };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        await dispatch(getMovieById(id));
-        setLoading(false);
-      } catch (error) {
-        setLoading(false);
-      }
-    };
-    fetchData();
-
-/*     return () => dispatch(cleanDetail()); */
-  }, [id, dispatch]);
-
-  useEffect(() => {
-    if (detail.shows && detail.shows.length > 0) {
-      const firstDay = detail.shows[0].date;
-      handleClickDate(firstDay);
-    }
-  }, [detail.shows]);
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    if (!userData) {
-      navigate("/login");
-    } else {
-      navigate("/ticket");
-    }
-  };
-
+  const {
+    activeTrailer,
+    detail,
+    handleChangeRating,
+    handleClickDate,
+    handleClickShow,
+    handleSubmit,
+    loading,
+    rating,
+    selectedDay,
+    selectedShow,
+    setActiveTrailer,
+  } = useDetail();
   return (
     <>
       {!detail.id || detail.activeMovie === false ? (
